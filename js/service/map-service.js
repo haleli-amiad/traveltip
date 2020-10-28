@@ -27,14 +27,14 @@ function getLocations() {
 }
 
 
-function addLocation(locationName, latCoord, lngCoord){
-gLocations.push(_createLoc(locationName,latCoord,lngCoord))
-        // marker = new google.maps.Marker({ position: ev.latLng, map: map })
-        saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+function addLocation(locationName, latCoord, lngCoord) {
+    gLocations.push(_createLoc(locationName, latCoord, lngCoord))
+    // marker = new google.maps.Marker({ position: ev.latLng, map: map })
+    saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
 }
 
-function removeLoc(gLocs){
-     saveLocationsToStorage(STORAGE_MAP_KEY, gLocs);
+function removeLoc(gLocs) {
+    saveLocationsToStorage(STORAGE_MAP_KEY, gLocs);
 }
 
 function _createLoc(name, latitude, longitude) {
@@ -44,8 +44,6 @@ function _createLoc(name, latitude, longitude) {
         time: Date.now(),
         positionLat: latitude,
         positionLong: longitude,
-        // wheather,
-        // updatedAt
     }
     return location;
 }

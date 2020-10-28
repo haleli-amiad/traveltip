@@ -1,6 +1,8 @@
 'use strict';
 
 import { mapService } from './service/map-service.js'
+import { weatherService } from './service/weather-service.js'
+import { weatherController } from './weather-controller.js';
 window.addEventListener('load', onInitMap)
 
 
@@ -85,8 +87,36 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         options
     );
     gMap.addListener('click', onAddLocation)
+    const geocoder = new google.maps.Geocoder();
+    document.getElementById("submit").addEventListener("click", () => {
+        geocodeAddress(geocoder, gMap);
+    });
 }
 
+function geocodeAddress(geocoder, resultsMap) {
+    const address = document.getElementById("address").value;
+    geocoder.geocode({ address: address }, (results, status) => {
+        renderWrittenLocation(address)
+        if (status === "OK") {
+            resultsMap.setCenter(results[0].geometry.location);
+            var latForWeath = results[0].geometry.location.lat();
+            var lngForWeath = results[0].geometry.location.lng();
+            weatherService.weather(latForWeath, lngForWeath)
+                .then(weatherController.renderWeather)
+            new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location,
+            });
+        } else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+}
+
+function renderWrittenLocation(address) {
+    document.querySelector('.curr-location').innerText = address
+
+}
 
 function onAddLocation(ev) {
     console.log(ev)
@@ -94,6 +124,9 @@ function onAddLocation(ev) {
     const latCoord = ev.latLng.lat();
     const lngCoord = ev.latLng.lng();
     var marker = new google.maps.Marker({ position: ev.latLng, map: gMap })
+    renderWrittenLocation(location)
+    weatherService.weather(latCoord, lngCoord)
+        .then(weatherController.renderWeather)
     mapService.addLocation(location, latCoord, lngCoord);
     renderMap()
 }

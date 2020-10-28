@@ -17,11 +17,11 @@
             <h4>Go wherever you want, with a click!</h4>
         </div>
     </header>
-    <input class="location-search">
-    <button class="go btn">GO</button>
+    <input class="location-search" id="address" type="textbox" value="Rome, IT" />
+    <input class="btn search-btn" id="submit" type="button" value="Go" />
     <button class="location btn">My Location</button>
     <div class="location-controller container">
-        <h4>Location:</h4>
+        <h4>Location: <span class="curr-location"></span></h4>
         <button class="copy-location btn">Copy Location</button>
     </div>
     <main class="map-container container">
