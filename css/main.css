@@ -123,3 +123,22 @@ div.weather {
     background-color: rgb(228, 228, 228);
     font-size: 1.5rem;
 }
+
+.copy-location {
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    top: 0;
+    transition: all .2s ease;
+}
+    .clipboard:hover {
+      top: 2px;
+    }
+  
+  
+    small {
+    font-weight: 700;
+    margin: 0;
+  }

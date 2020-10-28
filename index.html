@@ -22,8 +22,11 @@
     <button class="location btn">My Location</button>
     <div class="location-controller container">
         <h4>Location: <span class="curr-location"></span></h4>
-        <button class="copy-location btn">Copy Location</button>
+        <button class="copy-location btn">Copy Location
+            <small>(Have you already clicked?)</small>
+        </button>
     </div>
+    
     <main class="map-container container">
         <div class="map" id="map"></div>
         <div class="flex">
@@ -35,6 +38,7 @@
     </main>
 
     <script src="lib/axios.js"></script>
+    <script src="lib/jquery.js"></script>
     <script type="module" src="js/main-controller.js"></script>
     <script type="module" src="js/weather-controller.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4OtteJppJCztb32h0huQBNWom2QNPuJw" defer></script>

@@ -76,7 +76,6 @@ function onGoMarkedLoc(locId) {
 
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-    console.log(lat, lng);
     var elMap = document.querySelector('#map');
     var options = {
         center: { lat, lng },
@@ -137,15 +136,14 @@ function showLocation(position) {
 
 
 function onCopyLocation() {
-    var temp = document.querySelector("<input>");
-    console.log(temp);
+    var $temp = $("<input>");
     var $url = $(location).attr('href');
-    $('.clipboard').on('click', function () {
-        $("body").append($temp);
-        $temp.val($url).select();
-        document.execCommand("copy");
-        $temp.remove();
-        $("p").text("URL copied!");
+    $('.copy-location').on('click', function() {
+      $("body").append($temp);
+      $temp.val($url).select();
+      document.execCommand("copy");
+      $temp.remove();
+      $("small").text("URL copied!");
     })
 }
 
