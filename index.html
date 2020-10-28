@@ -16,7 +16,8 @@
     <h3>Location:</h3>
     <button class="copy-location btn">Copy Location</button>
     <div class="weather">Weather today</div>
-    <div class="location-table" onload="onInitMap()">
+    <div class="location-table">
+        <ul class="marked"></ul>
         <tr>
             <th>Location</th>
         </tr>
@@ -26,8 +27,11 @@
             <td>delete</td>
         </tbody>
     </div>
-    <div class="map"></div>
+    <div id="map" style="width:50%;height:500px;"></div>
+    <button class="center">🔘</button>
     <script type="module" src="js/main-controller.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4OtteJppJCztb32h0huQBNWom2QNPuJw&callback=initMap"
+    defer></script>
 </body>
 
 </html>
