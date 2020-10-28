@@ -2,16 +2,35 @@
 
 import { storageService } from './storage-service.js'
 export const mapService = {
-    // initLocations,
+    initLocations,
     makeId,
-    saveLocationsToStorage
+    saveLocationsToStorage,
+    getLocations,
+    addLocation
 }
 
 const STORAGE_MAP_KEY = 'mapDB';
+var gLocations;
 
-// function initLocations() {
-//     // _createLocs();
-// }
+
+
+
+function initLocations() {
+    _createLocs();
+
+}
+
+
+function getLocations() {
+    return gLocations;
+}
+
+
+function addLocation(latCoord, lngCoord) {
+    gLocations.push(_createLoc(location, latCoord, lngCoord))
+    // marker = new google.maps.Marker({ position: ev.latLng, map: map })
+    mapService.saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+}
 
 function _createLoc(name, latitude, longitude) {
     var location = {
@@ -19,20 +38,22 @@ function _createLoc(name, latitude, longitude) {
         locName: name,
         time: Date.now(),
         positionLat: latitude,
-        positionLong: longitude
+        positionLong: longitude,
+        // wheather,
+        // updatedAt
     }
     return location;
 }
 
-// function _createLocs() {
-//     let locations = storageService.loadFromStorage(STORAGE_MAP_KEY);
-//     if (!locations) {
-//         locations = [];
-//         locations.push(_createLoc('Place'));
-//     }
-//     gLocations = locations;
-//     saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
-// }
+function _createLocs() {
+    let locations = storageService.loadFromStorage(STORAGE_MAP_KEY);
+    if (!locations) {
+        locations = [];
+        locations.push(_createLoc('Place'));
+    }
+    gLocations = locations;
+    saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+}
 
 function saveLocationsToStorage() {
     storageService.saveToStorage(STORAGE_MAP_KEY, gLocations);
