@@ -1,6 +1,6 @@
 'use strict'
 
-import {storageService} from './storage-service.js'
+import { storageService } from './storage-service.js'
 export const mapService = {
     initLocations,
     makeId,
@@ -9,9 +9,6 @@ export const mapService = {
     addLocation,
     removeLoc
 }
-
-
-
 
 const STORAGE_MAP_KEY = 'mapDB';
 var gLocations;
@@ -39,7 +36,6 @@ gLocations.push(_createLoc(location,latCoord,lngCoord))
 function removeLoc(gLocs){
      saveLocationsToStorage(STORAGE_MAP_KEY, gLocs);
 }
-
 
 function _createLoc(name, latitude, longitude) {
     var location = {

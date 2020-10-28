@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-container">
         <img class="hero-img" src="img/world-map.png" alt="">
         <div class="header-text-container">
             <h1>TravelTip</h1>
@@ -20,25 +20,30 @@
     <input class="location">
     <button class="go btn">GO</button>
     <button class="location btn">My Location</button>
-    <h3>Location:</h3>
-    <button class="copy-location btn">Copy Location</button>
-    <div class="weather">Weather today</div>
-    <div class="location-table">
-        <ul class="marked"></ul>
-        <tr>
-            <th>Location</th>
-        </tr>
-        <tbody>
-            <td>go</td>
-            <td>location</td>
-          
-        </tbody>
+    <div class="location-controller container">
+        <h4>Location:</h4>
+        <button class="copy-location btn">Copy Location</button>
     </div>
-    <div id="map" style="width:50%;height:500px;"></div>
+    <main class="map-container container">
+        <div class="map" id="map"></div>
+        <div class="flex">
+            <div class="weather">Weather today</div>
+            <div class="location-table">
+                <ul class="marked"></ul>
+                <tr>
+                    <th>Location</th>
+                </tr>
+                <tbody>
+                    <td>go</td>
+                    <td>location</td>
+                    <td class="delete-loc">delete</td>
+                </tbody>
+            </div>
+        </div>
+    </main>
     <button class="center">🔘</button>
     <script type="module" src="js/main-controller.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4OtteJppJCztb32h0huQBNWom2QNPuJw"
-    defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4OtteJppJCztb32h0huQBNWom2QNPuJw" defer></script>
 </body>
 
 </html>
