@@ -1,15 +1,17 @@
 'use strict';
 
+window.addEventListener('load', onInitMap)
+
 function onInitMap() {
     initLocations();
     renderMap();
 }
 
 function renderMap() {
-let locs = getLocation();
-var locsUl = locs.map((loc) => {
-    var time = new Date(loc.time).toLocaleString();
-    return `
+    let locs = getLocation();
+    var locsUl = locs.map((loc) => {
+        var time = new Date(loc.time).toLocaleString();
+        return `
         <li> Latitude </li>
         <span>'${loc.positionLat}'</span>
         <li>Longitude</li>
@@ -19,8 +21,8 @@ var locsUl = locs.map((loc) => {
         <button onclick="deleteLoc('${loc.id}')">🗑️</button>
         </br>
     `
-})
-document.querySelector('.marked').innerHTML = locsUl;
+    })
+    document.querySelector('.marked').innerHTML = locsUl;
 }
 
 function onCenter() {

@@ -23,7 +23,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         const latCoord = ev.latLng.lat();
         const lngCoord = ev.latLng.lng();
 
-        gLocations.push(_createLoc(location,latCoord,lngCoord))
+        gLocations.push(_createLoc(location, latCoord, lngCoord))
         marker = new google.maps.Marker({ position: ev.latLng, map: map })
         saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
         renderMap()
