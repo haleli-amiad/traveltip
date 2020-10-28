@@ -5,27 +5,51 @@
 body {
     margin: 0 auto;
     text-align: center;
-    background-color: #090043;
+    background-color: #100c30;
     font-family: 'Syne Mono', monospace;
     color: #fffb7e;
 }
 
-header {
-    margin: 4rem auto;
-    display: flex;
-    flex-direction: row-reverse;
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-img.hero-img {
-    width: 60vw;
-    height: 50vh;
-    object-fit: contain;
+.btn {
+    background-color: grey;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    transition: all .4s;
 }
 
-.header-text-container {
+.btn:hover {
+    background-color: #c62a88;
+}
+
+/* header */
+
+header.header-container {
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+img.hero-img {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 50rem;
+    max-height: 50rem;
+    object-fit: contain;
+}
+
+div.header-text-container {
+    margin: 0 auto;
+    padding: 0;
 }
 
 h1 {
@@ -40,11 +64,49 @@ h4 {
     margin: 0;
 }
 
-.btn {
-    background-color: grey;
-    color: white;
+/* main */
+
+div.location-controller {
+    display: flex;
+    margin: 3rem auto;
+    justify-content: space-between;
 }
 
-.btn:hover {
-    background-color: rgb(204, 204, 204);
+input.location {
+    padding: 8.5px 14px;
+}
+
+div.map {
+    width: 40%;
+    height: 400px;
+}
+
+.location-table {
+    padding: 10px;
+    color: rgb(65, 65, 65);
+    background-color: rgb(187, 187, 187);
+    height: 50%;
+}
+
+.map-container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+div.weather {
+    height: 50%;
+    width: 30rem;
+    padding: 10px;
+    color: rgb(65, 65, 65);
+    background-color: #fff;
 }

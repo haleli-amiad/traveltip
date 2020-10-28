@@ -1,26 +1,17 @@
 'use strict'
 
-import {storageService} from './storage-service.js'
+import { storageService } from './storage-service.js'
 export const mapService = {
     // initLocations,
     makeId,
     saveLocationsToStorage
 }
 
-
-
-
 const STORAGE_MAP_KEY = 'mapDB';
-
-
-
-
 
 // function initLocations() {
 //     // _createLocs();
-
 // }
-
 
 function _createLoc(name, latitude, longitude) {
     var location = {
