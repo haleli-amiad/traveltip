@@ -5,21 +5,23 @@ window.addEventListener('load', onInitMap)
 
 
 var gMap;
+var gLocs;
+document.querySelector('.center').addEventListener('click', onCenter)
+
 
 
 function onInitMap() {
-    document.querySelector('.center').addEventListener('click', onCenter)
-    document.querySelector('.delete-loc').addEventListener('click', deleteLoc)
     initMap()
     mapService.initLocations();
     renderMap();
+    document.querySelector('.remove-btn').addEventListener('click', onRemoveLoc)
 }
 
 
 
 function renderMap() {
-    let locs = mapService.getLocations();
-    var locsUl = locs.map((loc) => {
+    gLocs = mapService.getLocations();
+    var locsUl = gLocs.map((loc) => {
         var time = new Date(loc.time).toLocaleString();
         return `
         <li> Latitude </li>
@@ -28,7 +30,7 @@ function renderMap() {
         <span>'${loc.positionLong}'</span>
         <li>Timestamp</li>
         <span>'${time}'</span>
-        <button onclick="deleteLoc('${loc.id}')">🗑️</button>
+        <button class="remove-btn">🗑️</button>
         </br>
     `
     })
@@ -39,12 +41,14 @@ function onCenter() {
     getPosition();
 }
 
-function deleteLoc(locId) {
-    var locIdx = gLocations.findIndex(function (loc) {
+
+function onRemoveLoc(locId) {
+    console.log(gLocs);
+    var locIdx = gLocs.findIndex(function (loc) {
         return locId === loc.id
     })
-    gLocations.splice(locIdx, 1)
-    mapService.saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+    gLocs.splice(locIdx, 1)
+    mapService.removeLoc();
     renderMap();
 }
 

@@ -6,7 +6,8 @@ export const mapService = {
     makeId,
     saveLocationsToStorage,
     getLocations,
-    addLocation
+    addLocation,
+    removeLoc
 }
 
 
@@ -32,7 +33,11 @@ function getLocations() {
 function addLocation(latCoord, lngCoord){
 gLocations.push(_createLoc(location,latCoord,lngCoord))
         // marker = new google.maps.Marker({ position: ev.latLng, map: map })
-        mapService.saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+        saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+}
+
+function removeLoc(gLocs){
+     saveLocationsToStorage(STORAGE_MAP_KEY, gLocs);
 }
 
 
@@ -56,7 +61,7 @@ function _createLocs() {
         locations.push(_createLoc('Place'));
     }
     gLocations = locations;
-    saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
+    saveLocationsToStorage();
 }
 
 function saveLocationsToStorage() {
