@@ -5,5 +5,14 @@
 body {
     margin: 0 auto;
     text-align: center;
-    background-color: rgb(181, 181, 181);
+    background-color: rgb(243, 128, 33);
+}
+
+.btn{
+    background-color: grey;
+    color: white;
+}
+
+.btn:hover{
+    background-color: rgb(204, 204, 204);
 }

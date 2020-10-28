@@ -10,7 +10,23 @@
 
 <body>
     <h1>TravelTip</h1>
-
+    <input class="location">
+    <button class="go btn">GO</button>
+    <button class="location btn">My Location</button>
+    <h3>Location:</h3>
+    <button class="copy-location btn">Copy Location</button>
+    <div class="weather">Weather today</div>
+    <div class="location-table" onload="onInitMap()">
+        <tr>
+            <th>Location</th>
+        </tr>
+        <tbody>
+            <td>go</td>
+            <td>location</td>
+            <td>delete</td>
+        </tbody>
+    </div>
+    <div class="map"></div>
     <script type="module" src="js/main-controller.js"></script>
 </body>
 
