@@ -7,8 +7,7 @@ window.addEventListener('load', onInitMap)
 var gMap;
 var gLocs;
 document.querySelector('.location').addEventListener('click', onUserLocation)
-
-
+document.querySelector('.copy-location').addEventListener('click', onCopyLocation)
 
 function onInitMap() {
     initMap()
@@ -62,10 +61,10 @@ function onRemoveLoc(locId) {
 }
 
 function getLocId(id) {
-        return gLocs.find(loc => loc.id === id);
-    }
+    return gLocs.find(loc => loc.id === id);
+}
 
-function onGoMarkedLoc(locId){
+function onGoMarkedLoc(locId) {
     var lat = getLocId(locId);
     initMap(lat.positionLat, lat.positionLong);
     renderMap();
@@ -101,6 +100,20 @@ function onAddLocation(ev) {
 
 function showLocation(position) {
     initMap(position.coords.latitude, position.coords.longitude);
+}
+
+
+function onCopyLocation() {
+    var temp = document.querySelector("<input>");
+    console.log(temp);
+    var $url = $(location).attr('href');
+    $('.clipboard').on('click', function () {
+        $("body").append($temp);
+        $temp.val($url).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $("p").text("URL copied!");
+    })
 }
 
 function handleLocationError(error) {
