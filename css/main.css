@@ -11,15 +11,14 @@ body {
 }
 
 header {
-    max-width: 1200px;
     margin: 4rem auto;
     display: flex;
     flex-direction: row-reverse;
 }
 
 img.hero-img {
-    width: 40vw;
-    height: 40vh;
+    width: 60vw;
+    height: 50vh;
     object-fit: contain;
 }
 
