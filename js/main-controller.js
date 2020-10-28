@@ -9,7 +9,7 @@ var gMap;
 
 function onInitMap() {
     document.querySelector('.center').addEventListener('click', onCenter)
-    document.querySelector('.delete-loc').addEventListener('click', deleteLoc)
+    // document.querySelector('.delete-loc').addEventListener('click', deleteLoc)
     initMap()
     mapService.initLocations();
     renderMap();

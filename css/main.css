@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -77,20 +77,28 @@ input.location {
 }
 
 div.map {
-    width: 40%;
-    height: 400px;
+    width: 30%;
+    height: 600px;
 }
 
 .location-table {
     padding: 10px;
     color: rgb(65, 65, 65);
     background-color: rgb(187, 187, 187);
-    height: 50%;
+    height: 60%;
+    overflow: scroll;
+}
+
+ul.marked {
+    list-style-type: none;
+    font-size: 0.9rem;
+    /* border: 1px solid gray; */
 }
 
 .map-container {
     display: flex;
     width: 100%;
+    padding: 0;
     margin: 0 auto;
     flex-wrap: wrap;
     flex-direction: row;
@@ -104,9 +112,14 @@ div.map {
 }
 
 div.weather {
-    height: 50%;
+    height: 40%;
     width: 30rem;
     padding: 10px;
     color: rgb(65, 65, 65);
     background-color: #fff;
+}
+
+.remove-btn {
+    border: none;
+    background-color: none;
 }
