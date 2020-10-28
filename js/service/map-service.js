@@ -27,8 +27,8 @@ function getLocations() {
 }
 
 
-function addLocation(latCoord, lngCoord){
-gLocations.push(_createLoc(location,latCoord,lngCoord))
+function addLocation(locationName, latCoord, lngCoord){
+gLocations.push(_createLoc(locationName,latCoord,lngCoord))
         // marker = new google.maps.Marker({ position: ev.latLng, map: map })
         saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
 }

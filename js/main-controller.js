@@ -6,7 +6,7 @@ window.addEventListener('load', onInitMap)
 
 var gMap;
 var gLocs;
-document.querySelector('.center').addEventListener('click', onCenter)
+document.querySelector('.location').addEventListener('click', onUserLocation)
 
 
 
@@ -14,7 +14,6 @@ function onInitMap() {
     initMap()
     mapService.initLocations();
     renderMap();
-    document.querySelector('.remove-btn').addEventListener('click', onRemoveLoc)
 }
 
 
@@ -25,30 +24,50 @@ function renderMap() {
         var time = new Date(loc.time).toLocaleString();
         return `
         <li> Latitude </li>
+        <span>'${loc.locName}'</span>
         <span>'${loc.positionLat}'</span>
         <li>Longitude</li>
         <span>'${loc.positionLong}'</span>
         <li>Timestamp</li>
         <span>'${time}'</span>
-        <button class="remove-btn">🗑️</button>
+        <button class="remove-btn" id="'${loc.id}'">🗑️</button>
+        <button class="go-marked-loc-btn" id="${loc.id}">Go</button>
         </br>
-    `
+        `
     })
     document.querySelector('.marked').innerHTML = locsUl;
+    var removeBtns = document.querySelectorAll('.remove-btn')
+    removeBtns.forEach(btn => {
+        btn.addEventListener('click', () => onRemoveLoc(btn.id));
+    });
+
+    var markedLocBtns = document.querySelectorAll('.go-marked-loc-btn')
+    markedLocBtns.forEach(btn => {
+        btn.addEventListener('click', () => onGoMarkedLoc(btn.id));
+    });
 }
 
-function onCenter() {
+function onUserLocation() {
     getPosition();
 }
 
 
 function onRemoveLoc(locId) {
-    console.log(gLocs);
     var locIdx = gLocs.findIndex(function (loc) {
         return locId === loc.id
     })
     gLocs.splice(locIdx, 1)
-    mapService.removeLoc();
+    mapService.removeLoc(gLocs);
+    renderMap();
+}
+
+function getLocId(id) {
+        return gLocs.find(loc => loc.id === id);
+    }
+
+function onGoMarkedLoc(locId){
+    var lat = getLocId(locId);
+    initMap(lat.positionLat, lat.positionLong);
     renderMap();
 }
 
@@ -56,6 +75,7 @@ function onRemoveLoc(locId) {
 
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
+    console.log(lat, lng);
     var elMap = document.querySelector('#map');
     var options = {
         center: { lat, lng },
@@ -75,13 +95,7 @@ function onAddLocation(ev) {
     const latCoord = ev.latLng.lat();
     const lngCoord = ev.latLng.lng();
     var marker = new google.maps.Marker({ position: ev.latLng, map: gMap })
-    // mapService.saveLocationsToStorage(STORAGE_MAP_KEY, gLocations);
-    // var marker = new google.maps.Marker({
-    //     position: { lat, lng },
-    //     map,
-    //     title: 'Hello World!'
-    // });
-    mapService.addLocation(latCoord, lngCoord);
+    mapService.addLocation(location, latCoord, lngCoord);
     renderMap()
 }
 
