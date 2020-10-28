@@ -1,5 +1,9 @@
 'use strict';
 import { weatherService } from './service/weather-service.js'
+export const weatherController = {
+    onInitWeather,
+    renderWeather
+}
 
 window.addEventListener('load', onInitWeather)
 
